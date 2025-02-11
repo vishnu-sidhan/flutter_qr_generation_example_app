@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "632210821382",
+    "firebase_url": "https://personal-db-813c8-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "personal-db-813c8",
+    "storage_bucket": "personal-db-813c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632210821382:android:2af48ca57a53e649d68e87",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632210821382-fqhleebirolr94if14nec0ddait3u2bc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8dtS7MxcMjxOqK1dE48DmxZ2wS1w2l78"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632210821382-fqhleebirolr94if14nec0ddait3u2bc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "632210821382-p1it87tgn9b3csutu8bm7iftg3950il5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.passwordManager"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
