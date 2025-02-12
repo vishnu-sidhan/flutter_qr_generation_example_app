@@ -5,6 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../homepage/home_page.dart';
+
 class LoginController extends GetxController {
   final formKey = GlobalKey<FormState>();
   final mobileNumber = TextEditingController();
@@ -18,7 +20,7 @@ class LoginController extends GetxController {
     toLogin.value = true;
     otpTimer();
     User? user = await signIn(mobileNumber.value.text);
-    if (user != null) print("Homepage");
+    if (user != null) Get.offAll(const HomePage());
   }
 
   void otpTimer() {

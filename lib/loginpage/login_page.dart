@@ -10,23 +10,12 @@ class LoginPage extends GetView<LoginController> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.indigo[700],
+        backgroundColor: Colors.transparent,
       ),
       backgroundColor: Colors.indigo[700],
       bottomSheet: Stack(
+        clipBehavior: Clip.none,
         children: [
-          Positioned(
-              left: 200,
-              width: 100,
-              top: -15,
-              child: Container(
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    color: Colors.blue, borderRadius: BorderRadius.circular(5)),
-                padding:
-                    const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10),
-                child: const Text("LOGIN"),
-              )),
           Form(
             key: controller.formKey,
             child: Padding(
@@ -80,6 +69,17 @@ class LoginPage extends GetView<LoginController> {
               ),
             ),
           ),
+          Positioned(
+              left: MediaQuery.of(context).size.width / 2 - 32,
+              top: -15,
+              child: Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    color: Colors.blue, borderRadius: BorderRadius.circular(5)),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10),
+                child: const Text("LOGIN"),
+              )),
         ],
       ),
     );

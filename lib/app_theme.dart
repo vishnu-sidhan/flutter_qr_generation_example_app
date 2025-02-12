@@ -9,6 +9,11 @@ final appTheme = ThemeData(
         shape: WidgetStatePropertyAll(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)))),
   ),
+  outlinedButtonTheme: OutlinedButtonThemeData(
+    style: ButtonStyle(
+        shape: WidgetStatePropertyAll(
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)))),
+  ),
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
     fillColor: Colors.indigo[700],
