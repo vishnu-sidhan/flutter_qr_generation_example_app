@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_qr_generation_example_app/app_template.dart';
 import 'package:flutter_qr_generation_example_app/homepage/home_controller.dart';
+import 'package:flutter_qr_generation_example_app/logindetailspage/login_details_page.dart';
+import 'package:flutter_qr_generation_example_app/widgets/qr_container.dart';
 import 'package:get/get.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({super.key});
@@ -40,33 +41,26 @@ class HomePage extends GetView<HomeController> {
                       ),
                       const SizedBox(height: 15),
                       Text(
-                        controller.randomNumber.value.toString(),
+                        controller.randomNumber,
                         textScaler: const TextScaler.linear(3),
                       ),
                     ],
                   ),
                 ),
                 Positioned(
-                    left: MediaQuery.of(context).size.width / 2 - 75,
-                    top: -105,
-                    child: DecoratedBox(
-                      decoration:
-                          BoxDecoration(borderRadius: BorderRadius.circular(5)),
-                      child: QrImageView(
-                        size: 150,
-                        backgroundColor: Colors.white,
-                        data: controller.randomNumber.value.toString(),
-                      ),
-                    ))
+                    left: MediaQuery.of(context).size.width / 2 - 100,
+                    top: -115,
+                    child: QrContainer(qrPainter: controller.qrPainter))
               ]),
               const Spacer(),
               OutlinedButton(
-                onPressed: () {},
-                child: const Text("Last Login at"),
+                onPressed: () => Get.to(() => const LoginDetailsPage()),
+                child: Obx(() => Text(
+                    "Last Login at ${controller.lastLoginDetail.value?.date ?? ""}")),
               ),
               const SizedBox(height: 20),
               ElevatedButton(
-                  onPressed: () {},
+                  onPressed: controller.onPressedSave,
                   child: const SizedBox(
                       width: double.infinity,
                       child: Center(child: Text("Save"))))

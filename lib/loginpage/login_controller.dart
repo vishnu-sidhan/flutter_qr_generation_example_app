@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_qr_generation_example_app/models/login_detail.dart';
 import 'package:get/get.dart';
 
 import '../homepage/home_page.dart';
@@ -12,15 +13,25 @@ class LoginController extends GetxController {
   final mobileNumber = TextEditingController();
   final otp = TextEditingController();
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseAuth get _auth => FirebaseAuth.instance;
   final toLogin = false.obs;
-  final resendOtpTimer = 0.obs;
+  final resendOtpTimer = 60.obs;
 
   void onPressedButton() async {
     toLogin.value = true;
     otpTimer();
     User? user = await signIn(mobileNumber.value.text);
-    if (user != null) Get.offAll(const HomePage());
+    if (user != null) {
+      LoginDetail loginDetail = LoginDetail();
+      loginDetail.ip = "1.1.1.1";
+      loginDetail.location = "Chennai";
+      loginDetail.date = DateTime.now();
+      await LoginDetail.collection
+          .doc(loginDetail.id)
+          .set(loginDetail.toJson())
+          .whenComplete(() => print("Added to firestore"));
+      Get.offAll(() => const HomePage(), arguments: loginDetail);
+    }
   }
 
   void otpTimer() {

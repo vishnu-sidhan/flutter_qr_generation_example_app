@@ -14,16 +14,30 @@ class AppTemplate extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        actions: title == "LOGIN"
+        leading: title != "Last Login"
             ? null
-            : [
-                TextButton(
-                    onPressed: () => Get.offAll(() => const LoginPage()),
-                    child: const Text("Logout")),
-                const SizedBox(
-                  width: 10,
-                )
-              ],
+            : IconButton(
+                onPressed: Get.back,
+                icon: const Icon(Icons.arrow_back_ios_new)),
+        actions: [
+          SizedBox.square(
+            dimension: 110,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.vertical(
+                bottom: Radius.circular(125),
+              ),
+              clipBehavior: Clip.antiAlias,
+              child: ColoredBox(
+                color: Colors.indigo.shade500,
+                child: title == "LOGIN"
+                    ? null
+                    : TextButton(
+                        onPressed: () => Get.offAll(() => const LoginPage()),
+                        child: const Text("Logout")),
+              ),
+            ),
+          ),
+        ],
       ),
       backgroundColor: Colors.indigo[700],
       bottomSheet: Stack(

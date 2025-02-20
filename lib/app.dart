@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_qr_generation_example_app/app_bindings.dart';
 import 'package:flutter_qr_generation_example_app/app_theme.dart';
@@ -14,7 +15,7 @@ class MainApp extends StatelessWidget {
       theme: appTheme,
       debugShowCheckedModeBanner: false,
       initialBinding: AppBindings(),
-      home: const HomePage(),
+      home: kDebugMode ? const HomePage() : const LoginPage(),
     );
   }
 }
